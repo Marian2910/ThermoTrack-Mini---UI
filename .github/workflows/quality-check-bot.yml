@@ -13,20 +13,28 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+    
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
+    
+      - name: Navigate to the correct directory
+        working-directory: ./thermotrack-mini
+        run: pwd
+    
       - name: Install dependencies
+        working-directory: ./thermotrack-mini
         run: npm install
-
+    
       - name: Run Lint
+        working-directory: ./thermotrack-mini
         run: npm run lint
-
+    
       - name: Run Unit Tests
+        working-directory: ./thermotrack-mini
         run: npm run test
-
+    
       - name: Build App
+        working-directory: ./thermotrack-mini
         run: npm run build
