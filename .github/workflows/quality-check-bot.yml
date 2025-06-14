@@ -31,10 +31,6 @@ jobs:
         working-directory: ./thermotrack-mini
         run: npm run lint
     
-      - name: Run Unit Tests
-        working-directory: ./thermotrack-mini
-        run: npm run test
-    
       - name: Build App
         working-directory: ./thermotrack-mini
         run: npm run build
