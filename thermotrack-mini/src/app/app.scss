@@ -1,0 +1,83 @@
+.thermo-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D95964;
+}
+
+.thermo-card {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #F2D5EA;
+  gap: 2rem;
+}
+
+.thermo-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.thermo-current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.thermo-current-value {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #752cf3;
+  text-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+}
+
+.thermo-current-label {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.thermo-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.thermo-desired {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.thermo-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.thermo-action-btn {
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.thermo-status {
+  color: #374151;
+  font-size: 1rem;
+  min-height: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
