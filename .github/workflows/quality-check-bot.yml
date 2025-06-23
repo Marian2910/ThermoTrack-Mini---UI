@@ -34,9 +34,11 @@ jobs:
       - name: Build App
         working-directory: ./thermotrack-mini
         run: npm run build
-      - name: List files after lint
-        working-directory: ./thermotrack-mini
-        run: ls -la
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
       - name: Commit lint report
         working-directory: ./thermotrack-mini
         env:
@@ -46,5 +48,4 @@ jobs:
           git config user.email "qualitycheckbot@users.noreply.github.com"
           git add lint-report.json
           git commit -m "Add lint report [bot]"
-          git push https://x-access-token:${PAT_TOKEN}@github.com/Marian2910/ThermoTrack-Mini---UI.git main
-
+          git push origin main
