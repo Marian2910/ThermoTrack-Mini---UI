@@ -38,6 +38,7 @@ jobs:
         working-directory: ./thermotrack-mini
         run: ls -la
       - name: Commit lint report
+        working-directory: ./thermotrack-mini
         run: |
           git config user.name "BOT1"
           git config user.email "qualitycheckbot@users.noreply.github.com"
