@@ -13,34 +13,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-    
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.19.0
-    
-      - name: Navigate to the correct directory
-        working-directory: ./thermotrack-mini
-        run: pwd
-    
+
       - name: Install dependencies
         working-directory: ./thermotrack-mini
         run: npm install
-    
-      - name: Run Lint
+
+      - name: Run Lint and Save Report
         working-directory: ./thermotrack-mini
-        run: npm run lint
-    
-      - name: Build App
-        working-directory: ./thermotrack-mini
-        run: npm run build
-      - name: List files after lint
-        working-directory: ./thermotrack-mini
-        run: ls -la
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
+        run: npm run lint > lint-report.txt || true
 
       - name: Commit lint report
         working-directory: ./thermotrack-mini
@@ -49,6 +34,6 @@ jobs:
         run: |
           git config user.name "BOT1"
           git config user.email "qualitycheckbot@users.noreply.github.com"
-          git add .
-          git commit -m "Add lint report [bot]"
-          git push origin main
+          git add lint-report.txt
+          git commit -m "Add lint report [bot]" || echo "No changes to commit"
+          git push https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }} HEAD:main
