@@ -34,6 +34,9 @@ jobs:
       - name: Build App
         working-directory: ./thermotrack-mini
         run: npm run build
+      - name: List files after lint
+        working-directory: ./thermotrack-mini
+        run: ls -la
       - name: Checkout code
         uses: actions/checkout@v3
         with:
