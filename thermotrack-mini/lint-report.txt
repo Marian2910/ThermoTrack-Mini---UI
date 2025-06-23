@@ -1,4 +1,0 @@
-
-> thermotrack-mini@0.0.0 lint
-> eslint . --ext .js,.jsx,.ts,.tsx -f json -o lint-report.json
-
