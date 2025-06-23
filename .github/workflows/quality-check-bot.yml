@@ -23,9 +23,25 @@ jobs:
         working-directory: ./thermotrack-mini
         run: npm install
 
-      - name: Run Lint and Save Report
+      - name: Run Lint and Save JSON Report
         working-directory: ./thermotrack-mini
-        run: npm run lint > lint-report.txt || true
+        run: npm run lint -- --format json --output-file lint-report.json || true
+
+      - name: Run Tests with Coverage
+        working-directory: ./thermotrack-mini
+        run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage || true
+
+      - name: Upload lint report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: ./thermotrack-mini/lint-report.json
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: ./thermotrack-mini/coverage/
 
       - name: Commit lint report
         working-directory: ./thermotrack-mini
@@ -34,7 +50,7 @@ jobs:
         run: |
           git config user.name "BOT1"
           git config user.email "qualitycheckbot@users.noreply.github.com"
-          git add lint-report.txt
+          git add lint-report.json
           git commit -m "Add lint report [bot]" || echo "No changes to commit"
           git remote set-url origin https://Marian2910:${PAT_TOKEN}@github.com/${{ github.repository }}
           git push origin HEAD:main
