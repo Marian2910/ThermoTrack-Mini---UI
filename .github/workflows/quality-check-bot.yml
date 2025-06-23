@@ -41,12 +41,6 @@ jobs:
           name: lint-report
           path: ./thermotrack-mini/reports/lint-report.json
 
-      - name: Upload coverage report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: ./thermotrack-mini/reports/coverage/
-
       - name: Commit lint report
         working-directory: ./thermotrack-mini
         env:
