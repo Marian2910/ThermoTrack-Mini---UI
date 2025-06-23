@@ -49,6 +49,6 @@ jobs:
         run: |
           git config user.name "BOT1"
           git config user.email "qualitycheckbot@users.noreply.github.com"
-          git add lint-report.json
+          git add .
           git commit -m "Add lint report [bot]"
           git push origin main
