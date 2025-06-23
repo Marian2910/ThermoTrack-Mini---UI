@@ -25,21 +25,23 @@ jobs:
 
       - name: Run Lint and Save JSON Report
         working-directory: ./thermotrack-mini
-        run: |
-          mkdir -p reports
-          npm run lint -- --format json --output-file reports/lint-report.json || true
+        run: npm run lint -- --format json --output-file lint-report.json || true
 
       - name: Run Tests with Coverage
         working-directory: ./thermotrack-mini
-        run: |
-          npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage || true
-          if [ -d coverage ]; then mv coverage reports/coverage; fi
+        run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage || true
 
       - name: Upload lint report artifact
         uses: actions/upload-artifact@v4
         with:
           name: lint-report
-          path: ./thermotrack-mini/reports/lint-report.json
+          path: ./thermotrack-mini/lint-reports/lint-report.json
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: ./thermotrack-mini/coverage/
 
       - name: Commit lint report
         working-directory: ./thermotrack-mini
