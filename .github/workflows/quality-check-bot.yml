@@ -51,6 +51,6 @@ jobs:
           git config user.name "BOT1"
           git config user.email "qualitycheckbot@users.noreply.github.com"
           git add lint-report.json
-          git commit -m "Add lint report [bot]" || echo "No changes to commit"
+          git commit -m "Lint Report FE [bot]" || echo "No changes to commit"
           git remote set-url origin https://Marian2910:${PAT_TOKEN}@github.com/${{ github.repository }}
           git push origin HEAD:main
