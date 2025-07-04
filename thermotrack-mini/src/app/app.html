@@ -1,17 +1,19 @@
 <main class="thermo-main">
   <mat-card class="thermo-card">
-    <h1 class="thermo-title">ThermoTrack Mini - Dashboard</h1>
+    <mat-card-title class="thermo-title">ThermoTrack Mini - Dashboard</mat-card-title>
     <div class="thermo-current">
       <span class="thermo-current-value">{{ currentTemperature }}°C</span>
       <span class="thermo-current-label">Current Temperature</span>
     </div>
-    <div class="thermo-controls">
+    <div class="thermo-controls" role="group" aria-label="Temperature controls">
       <button mat-fab color="primary" (click)="decreaseTemp()" aria-label="Decrease temperature">
         <mat-icon>arrow_downward</mat-icon>
+        <span class="visually-hidden">Decrease temperature</span>
       </button>
       <span class="thermo-desired">{{ desiredTemperature }}°C</span>
       <button mat-fab color="primary" (click)="increaseTemp()" aria-label="Increase temperature">
         <mat-icon>arrow_upward</mat-icon>
+        <span class="visually-hidden">Increase temperature</span>
       </button>
     </div>
     <div class="thermo-actions">
@@ -29,4 +31,4 @@
     </div>
   </mat-card>
 </main>
-<router-outlet />
+<router-outlet></router-outlet>
